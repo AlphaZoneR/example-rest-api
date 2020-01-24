@@ -1,6 +1,6 @@
 package edu.apaczai.backend.data.dao;
 
-import edu.apaczai.backend.data.model.Activity;
+import edu.apaczai.backend.data.model.Task;
 import edu.apaczai.backend.data.model.Difficulty;
 import edu.apaczai.backend.data.model.Status;
 import org.springframework.stereotype.Component;
@@ -13,48 +13,48 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class ActivityDao {
-    private static final Map<Long, Activity> activityMap = new ConcurrentHashMap<Long, Activity>();
+    private static final Map<Long, Task> activityMap = new ConcurrentHashMap<Long, Task>();
     private static Long COUNT = 0L;
 
     public ActivityDao() {
-        this.create(new Activity(Difficulty.EASY, "Doggie", "Walk your dog for 1 hour!", Status.PENDING));
+        this.create(new Task(Difficulty.EASY, "Doggie", "Walk your dog for 1 hour!", Status.PENDING));
     }
 
-    public Activity create(final Activity activity) {
-        if (Objects.nonNull(activity.getId())) {
-            activityMap.put(activity.getId(), activity);
+    public Task create(final Task task) {
+        if (Objects.nonNull(task.getId())) {
+            activityMap.put(task.getId(), task);
         } else {
-            activity.setId(COUNT);
-            activityMap.put(COUNT, activity);
+            task.setId(COUNT);
+            activityMap.put(COUNT, task);
             COUNT++;
         }
 
-        return activity;
+        return task;
     }
 
-    public Activity read(final Long id) {
+    public Task read(final Long id) {
         return activityMap.getOrDefault(id, null);
     }
 
-    public Activity update(final Activity activity) {
-        if (Objects.nonNull(activity.getId())) {
-            activityMap.put(activity.getId(), activity);
-            return activity;
+    public Task update(final Task task) {
+        if (Objects.nonNull(task.getId())) {
+            activityMap.put(task.getId(), task);
+            return task;
         }
 
         return null;
     }
 
-    public Activity delete(final Activity activity) {
-        if (Objects.nonNull(activity.getId())) {
-            activityMap.remove(activity.getId(), activity);
-            return activity;
+    public Task delete(final Task task) {
+        if (Objects.nonNull(task.getId())) {
+            activityMap.remove(task.getId(), task);
+            return task;
         }
 
         return null;
     }
 
-    public List<Activity> readAll() {
+    public List<Task> readAll() {
         return new ArrayList<>(activityMap.values());
     }
 }

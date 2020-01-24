@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="task_title_placeholder">Task</string>
+    <string name="activity_description">Description</string>
+    <string name="activity_difficulty_placeholder">Difficulty</string>
+    <string name="activity_status_placeholder">Status</string>
 </resources>

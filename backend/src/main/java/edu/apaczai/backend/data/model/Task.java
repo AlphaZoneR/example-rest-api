@@ -1,14 +1,14 @@
 package edu.apaczai.backend.data.model;
 
-public final class Activity extends Storable {
+public final class Task extends Storable {
     private Difficulty difficulty;
     private String title;
     private String description;
     private Status status;
 
-    public Activity() {}
+    public Task() {}
 
-    public Activity(Difficulty difficulty, String title, String description, Status status) {
+    public Task(Difficulty difficulty, String title, String description, Status status) {
         this.difficulty = difficulty;
         this.title = title;
         this.description = description;
